@@ -191,7 +191,7 @@ export default class Registration extends Component {
                       <input
                         className={"input-r"}
                         type="number"
-                        placeholder="eg. 9841234567"
+                        placeholder="eg. 0987654321"
                         value={this.state.voterPhone}
                         onChange={this.updateVoterPhone}
                       />

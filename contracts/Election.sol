@@ -8,7 +8,7 @@ contract Election {
     bool start;
     bool end;
 
-    constructor() public {
+    constructor() public { // San
         // Initilizing default values
         admin = msg.sender;
         candidateCount = 0;
@@ -17,18 +17,18 @@ contract Election {
         end = false;
     }
 
-    function getAdmin() public view returns (address) {
+    function getAdmin() public view returns (address) { // Swa
         // Returns account address used to deploy contract (i.e. admin)
         return admin;
     }
 
-    modifier onlyAdmin() {
+    modifier onlyAdmin() { // Swa
         // Modifier for only admin access
         require(msg.sender == admin);
         _;
     }
     // Modeling a candidate
-    struct Candidate {
+    struct Candidate { //SDe
         uint256 candidateId;
         string header;
         string slogan;
@@ -36,12 +36,12 @@ contract Election {
     }
     mapping(uint256 => Candidate) public candidateDetails;
 
-    // Adding new candidates
-    function addCandidate(string memory _header, string memory _slogan)
+    // Adding new candidates  //SDe
+    function addCandidate(string memory _header, string memory _slogan) 
         public
         // Only admin can add 
         onlyAdmin
-    {
+    { 
         Candidate memory newCandidate =
             Candidate({
                 candidateId: candidateCount,
@@ -63,7 +63,7 @@ contract Election {
     }
     ElectionDetails electionDetails;
 
-    function setElectionDetails(
+    function setElectionDetails( //Disha
         string memory _adminName,
         string memory _adminEmail,
         string memory _adminTitle,
@@ -85,8 +85,8 @@ contract Election {
         end = false;
     }
 
-    // Get Elections details
-    function getElectionDetails()
+    // Get Elections details // San
+    function getElectionDetails() 
     public
     view
     returns(string memory adminName, 
@@ -101,7 +101,7 @@ contract Election {
         electionDetails.organizationTitle);
     }
 
-    // Get candidates count
+    // Get candidates count //Disha
     function getTotalCandidate() public view returns (uint256) {
         // Returns total number of candidates
         return candidateCount;
@@ -113,7 +113,7 @@ contract Election {
         return voterCount;
     }
 
-    // Modeling a voter
+    // Modeling a voter //Disha
     struct Voter {
         address voterAddress;
         string name;
@@ -150,7 +150,7 @@ contract Election {
         voterDetails[voterAddress].isVerified = _verifedStatus;
     }
 
-    // Vote
+    // Vote //SDe
     function vote(uint256 candidateId) public {
         require(voterDetails[msg.sender].hasVoted == false);
         require(voterDetails[msg.sender].isVerified == true);

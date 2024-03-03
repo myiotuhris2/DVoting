@@ -1,4 +1,3 @@
-// Node module
 import React from "react";
 
 const NotInit = () => {

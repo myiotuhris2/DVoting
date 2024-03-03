@@ -17,7 +17,7 @@ import Election from "../contracts/Election.json";
 // CSS
 import "./Home.css";
 
-// const buttonRef = React.createRef();
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -32,8 +32,8 @@ export default class Home extends Component {
     };
   }
 
-  // refreshing once
   componentDidMount = async () => {
+    // refreshing once
     if (!window.location.hash) {
       window.location = window.location + "#loaded";
       window.location.reload();
@@ -53,8 +53,7 @@ export default class Home extends Component {
         deployedNetwork && deployedNetwork.address
       );
 
-      // Set web3, accounts, and contract to the state, and then proceed with an
-      // example of interacting with the contract's methods.
+      // Set web3, accounts, and contract to the state in the constructor
       this.setState({
         web3: web3,
         ElectionInstance: instance,
@@ -94,6 +93,7 @@ export default class Home extends Component {
       console.error(error);
     }
   };
+
   // end election
   endElection = async () => {
     await this.state.ElectionInstance.methods
@@ -101,7 +101,8 @@ export default class Home extends Component {
       .send({ from: this.state.account, gas: 1000000 });
     window.location.reload();
   };
-  // register and start election
+
+  // register election
   registerElection = async (data) => {
     await this.state.ElectionInstance.methods
       .setElectionDetails(
@@ -174,11 +175,12 @@ export default class Home extends Component {
 
   renderAdminHome = () => {
     const EMsg = (props) => {
+      // Prints any error message
       return <span style={{ color: "tomato" }}>{props.msg}</span>;
     };
 
     const AdminHome = () => {
-      // Contains of Home page for the Admin
+      // Contents of Home page for the Admin
       const {
         handleSubmit,
         register,

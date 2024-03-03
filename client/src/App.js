@@ -6,13 +6,8 @@ import Home from "./component/Home";
 import Voting from "./component/Voting/Voting";
 import Results from "./component/Results/Results";
 import Registration from "./component/Registration/Registration";
-
 import AddCandidate from "./component/Admin/AddCandidate/AddCandidate";
 import Verification from "./component/Admin/Verification/Verification";
-import test from "./component/test";
-// import StartEnd from "./component/Admin/StartEnd/StartEnd";
-
-import Footer from "./component/Footer/Footer";
 
 import "./App.css";
 
@@ -28,11 +23,10 @@ export default class App extends Component {
             <Route exact path="/Results" component={Results} />
             <Route exact path="/Registration" component={Registration} />
             <Route exact path="/Verification" component={Verification} />
-            <Route exact path="/test" component={test} />
+            {/* <Route exact path="/test" component={test} /> */}
             <Route exact path="*" component={NotFound} />
           </Switch>
         </Router>
-        <Footer />
       </div>
     );
   }
